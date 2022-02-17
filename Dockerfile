@@ -1,6 +1,7 @@
 FROM ubuntu:latest
 
-COPY . /opt/app
+COPY ./app /opt/app
+COPY ./data /opt/app/data
 WORKDIR /opt/app
 
 RUN apt-get update && apt install -y python3 pip vim

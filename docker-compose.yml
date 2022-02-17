@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  mysql_db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: patients
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    networks:
+      - app
+
+  python-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - mysql_db
+    networks:
+      - app
+    command:
+      tail -f /dev/null
+
+networks:
+  app:
+    driver: bridge
