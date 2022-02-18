@@ -1,13 +1,12 @@
 version: '3'
 
 services:
-  mysql_db:
-    image: mysql:5.7
+  mongo:
+    image: mongo
+    restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: patients
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
+        - MONGO_INITDB_ROOT_USERNAME=root
+        - MONGO_INITDB_ROOT_PASSWORD=password
     networks:
       - app
 
@@ -16,7 +15,7 @@ services:
       context: .
       dockerfile: Dockerfile
     depends_on:
-      - mysql_db
+      - mongo
     networks:
       - app
     command:

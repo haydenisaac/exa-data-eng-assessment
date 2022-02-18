@@ -1,4 +1,3 @@
 fhir.resources
-sqlalchemy
-pymysql
-
+pymongo
+dnspython
