@@ -16,13 +16,14 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    environment:
+      PYTHONUNBUFFERED: 1    
     depends_on:
       - mongo
     networks:
       - app
     command:
-      python3 read_json.py
-      tail -f /dev/null
+        python3 read_json.py 
 
 networks:
   app:
