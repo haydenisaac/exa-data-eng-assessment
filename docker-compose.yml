@@ -7,6 +7,8 @@ services:
     environment:
         - MONGO_INITDB_ROOT_USERNAME=root
         - MONGO_INITDB_ROOT_PASSWORD=password
+    volumes:
+      - ./mongo:/mongo 
     networks:
       - app
 
@@ -19,6 +21,7 @@ services:
     networks:
       - app
     command:
+      python3 read_json.py
       tail -f /dev/null
 
 networks:

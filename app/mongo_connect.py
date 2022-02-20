@@ -17,7 +17,7 @@ class MongoConnection:
 
     def insertToCollection(self, collection_name, data):
         collection = self.db[collection_name]
-        collection.insert_one(data)
+        collection.insert_many(data)
 
     def pushToMongo(self, resourceType, data):
         self.connect()
